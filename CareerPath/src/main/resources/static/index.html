@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career Recommendation</title>
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(to right, #83a4d4, #b6fbff) no-repeat center center/cover;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #333;
+        }
+
+        .container {
+          background-color: rgba(255, 255, 255, 0.92);
+          padding: 30px 40px;
+          border-radius: 15px;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+          max-width: 500px;
+          width: 90%;
+        }
+
+        h2 {
+          text-align: center;
+          margin-bottom: 20px;
+          color: #2c3e50;
+        }
+
+        label {
+          font-weight: bold;
+          margin-top: 15px;
+          display: block;
+        }
+
+        select,
+        input,
+        button {
+          width: 100%;
+          padding: 10px;
+          margin-top: 8px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 14px;
+        }
+
+        button {
+          background-color: #007BFF;
+          color: white;
+          border: none;
+          cursor: pointer;
+          margin-top: 20px;
+          font-weight: bold;
+          transition: background-color 0.3s;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+
+        #result {
+          margin-top: 20px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #1e8449;
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Career Recommendation Form</h2>
+
+    <label for="education">Education Level:</label>
+    <select id="education">
+        <option value="">SELECT</option>
+        <option value="10th">10th</option>
+        <option value="12th">12th</option>
+        <option value="bachelor">Bachelor</option>
+        <option value="master">Master</option>
+    </select>
+
+    <label>Skills:</label>
+    <input type="text" id="skills" placeholder="e.g., Java, Problem Solving">
+
+    <label>Interests:</label>
+    <input type="text" id="interests" placeholder="e.g., Tech, Science">
+
+    <button onclick="getRecommendation()">Get Recommendation</button>
+
+    <h3 id="result"></h3>
+</div>
+
+<script>
+    async function getRecommendation() {
+      const education = document.getElementById("education").value;
+      const skills = document.getElementById("skills").value.split(',').map(s => s.trim()).filter(Boolean);
+      const interests = document.getElementById("interests").value.split(',').map(i => i.trim()).filter(Boolean);
+
+      if (!education || skills.length === 0 || interests.length === 0) {
+        document.getElementById("result").innerText = "⚠️ Please fill all fields properly.";
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8080/api/recommend', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ education, skills, interests })
+        });
+
+        const data = await response.json();
+
+if (data.recommendedCareer && data.recommendedCareer.length > 0) {
+  document.getElementById("result").innerText = `🔎 Suggested Career: ${data.recommendedCareer[0]}`;
+} else {
+  document.getElementById("result").innerText = `🔍 Suggested Career: No Match Found`;
+}
+
+
+      } catch (error) {
+        document.getElementById("result").innerText = "❌ Error connecting to server.";
+        console.error(error);
+      }
+    }
+</script>
+</body>
+</html>
