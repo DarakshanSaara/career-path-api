@@ -74,10 +74,10 @@ Open index.html in your browser. Enter your data and click "Get Recommendation".
 ## 🖼️ Screenshots
 
 🔧 Postman Testing Example
-(https://github.com/user-attachments/assets/1cf775f7-1620-4bf5-b633-73987245566e)
+![Screenshot 2025-06-29 185132](https://github.com/user-attachments/assets/b636b5cb-f973-49db-8455-eda8896cbdf6)
 
 🌐 User Interface Page
-(https://github.com/user-attachments/assets/aba6f85d-014c-4931-935c-f4f9884097f8)
+![Screenshot 2025-06-29 160734](https://github.com/user-attachments/assets/73709b3b-78db-4e25-b520-c6696ffa98a6)
 
 ---
 
