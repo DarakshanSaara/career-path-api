@@ -83,4 +83,4 @@ Open index.html in your browser. Enter your data and click "Get Recommendation".
 
 ## 🙋‍♀️ Author
 Saara Darakshan
-📌 Connect with me on GitHub
+📌 Connect with me on GitHub (https://github.com/DarakshanSaara)
