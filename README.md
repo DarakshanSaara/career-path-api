@@ -83,4 +83,5 @@ Open index.html in your browser. Enter your data and click "Get Recommendation".
 
 ## 🙋‍♀️ Author
 Saara Darakshan
+Full Stack Web Developer | Open Source Contributor | Tech Enthusiast
 📌 Connect with me on GitHub (https://github.com/DarakshanSaara)
